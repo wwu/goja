@@ -1475,6 +1475,7 @@ func (r *Runtime) RunProgram(p *Program) (result Value, err error) {
 		result = r.vm.result
 	} else {
 		err = ex
+		fmt.Println(err)
 	}
 	if recursive {
 		vm.clearStack()
