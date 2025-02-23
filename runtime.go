@@ -1475,7 +1475,11 @@ func (r *Runtime) RunProgram(p *Program) (result Value, err error) {
 		result = r.vm.result
 	} else {
 		err = ex
-		fmt.Println(err)
+		if ex, ok := err.(*Exception); ok {
+			fmt.Printf("Exception occurred: %+v\n", ex)
+		} else {
+			fmt.Println("MyError: ", err)
+		}
 	}
 	if recursive {
 		vm.clearStack()
