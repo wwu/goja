@@ -1400,7 +1400,8 @@ func (r *Runtime) RunString(str string) (Value, error) {
 // RunScript executes the given string in the global context.
 func (r *Runtime) RunScript(name, src string) (Value, error) {
 	p, err := r.compile(name, src, false, true, nil)
-
+	fmt.Println("Error:", err)
+	fmt.Println("Program:", p)
 	if err != nil {
 		return nil, err
 	}
