@@ -1480,6 +1480,7 @@ func (r *Runtime) RunProgram(p *Program) (result Value, err error) {
 			fmt.Printf("Stack frame %d: %v", i, frame.funcName)
 		}
 		fmt.Printf("Exception value: %v", ex.val)
+		fmt.Println("Exception string: ", ex.String())
 	}
 	if recursive {
 		vm.clearStack()
