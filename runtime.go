@@ -1475,11 +1475,11 @@ func (r *Runtime) RunProgram(p *Program) (result Value, err error) {
 		result = r.vm.result
 	} else {
 		err = ex
-		if ex, ok := err.(*Exception); ok {
-			fmt.Printf("Exception occurred: %+v\n", ex)
-		} else {
-			fmt.Println("MyError: ", err)
+		// print each element in ex.stack as an array
+		for i, frame := range ex.stack {
+			fmt.Printf("Stack frame %d: %v", i, frame.funcName)
 		}
+		fmt.Printf("Exception value: %v", ex.val)
 	}
 	if recursive {
 		vm.clearStack()
